@@ -1,0 +1,7 @@
+streamlit>=0.65.0
+openai
+PyYAML
+pandas
+openpyxl
+cohere
+python-dotenv
