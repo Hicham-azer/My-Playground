@@ -123,7 +123,7 @@ if 'configs' not in st.session_state:
         'provider': 'OpenAI',
         'model': 'gpt-3.5-turbo',
         'temperature': 0.7,
-        'max_tokens': 150,
+        'max_tokens': 4096,
         'top_p': 1.0,
         'frequency_penalty': 0.0,
         'presence_penalty': 0.0
@@ -193,8 +193,8 @@ def display_configs():
             )
             # Max Tokens
             max_tokens = st.slider(
-                "Max Tokens", 50, 1024,
-                value=config.get('max_tokens', 150),
+                "Max Tokens", 50, 4096,
+                value=config.get('max_tokens', 4096),
                 key=f"max_tokens_{i}"
             )
             # Top_p
@@ -240,7 +240,7 @@ if st.sidebar.button("Add Configuration"):
         'provider': 'OpenAI',
         'model': 'gpt-3.5-turbo',
         'temperature': 0.7,
-        'max_tokens': 150,
+        'max_tokens': 4096,
         'top_p': 1.0,
         'frequency_penalty': 0.0,
         'presence_penalty': 0.0
@@ -412,7 +412,7 @@ if st.button("Generate Responses"):
                             st.write(f"**Frequency Penalty:** {res['frequency_penalty']}")
                             st.write(f"**Presence Penalty:** {res['presence_penalty']}")
                         st.write("**Response:**")
-                        st.code(res['response'], language='')
+                        st.markdown(res['response'])
             except Exception as e:
                 st.error(f"An error occurred: {e}")
     else:
@@ -484,7 +484,7 @@ if st.button("Generate Responses"):
                             st.write(f"**Frequency Penalty:** {res['frequency_penalty']}")
                             st.write(f"**Presence Penalty:** {res['presence_penalty']}")
                         st.write("**Response:**")
-                        st.code(res['response'], language='')
+                        st.markdown(res['response'])
             except Exception as e:
                 st.error(f"An error occurred: {e}")
 
